@@ -1,0 +1,14 @@
+{
+  "name": "stack-overgol-pwa",
+  "version": "1.0.0",
+  "description": "StackOvergol PWA",
+  "scripts": {
+    "build": "browserify -e ./src/index.js > ./bundle.js"
+  },
+  "author": "Matheus Sampaio <matheus@sampaio.us>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "14.4.0",
+    "lodash": "4.17.4"
+  }
+}

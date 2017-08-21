@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <!--  Meta  -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackOvergol</title>
+
+    <!--  Styles  -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="card timer-container">
+        <div class="animated progress">
+              <div class="indeterminate"></div>
+        </div>
+        <div class="card-content animated infinite">
+            <div class="card-title">Timer</div>
+
+            <div class="timer">8m 0s</div>
+        </div>
+
+        <div class="card-action">
+            <button class="waves-effect waves-light btn pause">Pause</button>
+            <button class="waves-effect waves-light btn start">Start</button>
+            <button class="waves-effect waves-light btn reset">Reset</button>
+        </div>
+    </div>
+
+    <div class="card scoreboard-container">
+        <div class="card-content">
+            <div class="card-title">Scoreboard</div>
+            <div class="scoreboard">
+                <div class="team-a">
+                    <div class="score">0</div>
+                    <div class="team">Azul (0)</div>
+                </div>
+                <div class="score-division">x</div>
+                <div class="team-b">
+                    <div class="score">0</div>
+                    <div class="team">Branco (0)</div>
+                </div>
+            </div>
+            <div class="card-title won">Team won!</div>
+        </div>
+        <div class="card-action">
+            <button class="waves-effect waves-light btn gol-a disabled">+1</button>
+            <button class="waves-effect waves-light btn gol-b disabled">+1</button>
+        </div>
+    </div>
+
+    <div class="card next-match">
+        <div class="card-content">
+            <div class="card-title">Next team</div>
+            <div class="team">
+                Verde
+            </div>
+        </div>
+    </div>
+
+    <div class="card history">
+        <div class="card-content">
+            <div class="card-title">History</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Team A</th>
+                            <th>Score A</th>
+                            <th>Score B</th>
+                            <th>Team B</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <!-- Compiled and minified CSS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timer.jquery/0.7.0/timer.jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script> -->
+
+    <script src="./bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+:root {
+    --gutter: 8px;
+
+    --color-danger: orange;
+}
+
+html {
+    /*font-size: 1rem;*/
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f5;
+}
+
+nav {
+    margin-bottom: var(--gutter);
+}
+
+.btn.pause, .btn.reset {
+    display: none;
+}
+
+.card {
+    margin: var(--gutter);
+}
+
+.card .card-content {
+    padding: 18px;
+}
+
+.progress {
+    margin: 0;
+    opacity: 0;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.timer-container .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 3em;
+}
+
+.timer-container .card-content .timer {
+    text-align: center;
+}
+
+.timer-container .card-action {
+    display: flex;
+    justify-content: center;
+}
+
+.timer-container .card-action button {
+    width: 100px;
+}
+
+.btn {
+    margin-right: var(--gutter);
+}
+
+.scoreboard-container .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 3em;
+}
+
+.scoreboard {
+    display: flex;
+}
+
+.scoreboard-container .card-title.won {
+    text-align: center;
+    font-size: 0.5em;
+    margin-top: 16px;
+    color: green;
+    display: none;
+}
+
+.scoreboard-container .card-action {
+    display: flex;
+    justify-content: space-around;
+}
+
+.scoreboard-container .card-content .team-a, .scoreboard-container .card-content .team-b {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreboard-container .card-content .score-division {
+    display: flex;
+    align-items: center;
+    font-size: 0.5em;
+}
+
+.scoreboard-container .card-content .team {
+    font-size: 0.3em;
+}
+
+.teams-container {
+    display: flex;
+}
+
+.teams-container .card {
+    flex: 1;
+}
+
+.teams-container .card-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.teams-container .card-content .team-a {
+    margin-right: 15px;
+}
+
+.teams-container .card-content .team-b {
+    margin-left: 15px;
+}
+
+.teams-container .card-content .team-color {
+    font-size: 2em;
+}
+
+.team-a, .team-b {
+    flex: 1;
+}
+
+th, td {
+    text-align: center;
+}
+
+td {
+    padding: 8px 0 0 0;
+}
+
+td.won {
+    color: green;
+}
+
+td.loss {
+    color: red;
+}
+
+td.max-victoires {
+    color: blue;
+}
+
+.next-match {
+    /*display: none;*/
+}
+
+.next-match .card-action {
+    display: flex;
+    justify-content: center;
+}
+
+.next-match .team {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.history {
+    display: none;
+}
