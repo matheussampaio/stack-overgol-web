@@ -20,7 +20,7 @@ class Timer {
         $('.timer').timer('remove');
 
         $('.timer').timer({
-            duration: '0m05s',
+            duration: '8m00s',
             format: '%mm %ss',
             countdown: true,
             callback: () => {
