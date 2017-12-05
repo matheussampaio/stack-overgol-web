@@ -3,12 +3,30 @@
   "version": "1.0.0",
   "description": "StackOvergol PWA",
   "scripts": {
-    "build": "browserify -e ./src/index.js > ./public/bundle.js"
+    "build": "parcel build src/index.html",
+    "debug": "parcel -p 3000 src/index.html",
+    "start": "serve dist/"
   },
   "author": "Matheus Sampaio <matheus@sampaio.us>",
   "license": "MIT",
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "browserify": "14.4.0",
-    "lodash": "4.17.4"
+    "lodash": "^4.17.4",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.12.1",
+    "parcel-bundler": "^1.0.1",
+    "riotify": "^2.0.0",
+    "serve": "^6.4.1"
+  },
+  "dependencies": {
+    "firebase": "^4.7.0",
+    "materialize-css": "^0.100.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-firebaseui": "^1.0.10",
+    "riot": "^3.7.4"
   }
 }
