@@ -16,7 +16,7 @@
     "lodash": "^4.17.4",
     "node-sass": "^4.7.2",
     "nodemon": "^1.12.1",
-    "parcel-bundler": "^1.0.1",
+    "parcel-bundler": "^1.6.1",
     "riotify": "^2.0.0",
     "serve": "^6.4.1"
   },
