@@ -4,7 +4,6 @@ import firebase from 'firebase'
 
 import styles from './styles.css'
 
-
 class Table extends React.Component {
   constructor(props) {
     super(props)

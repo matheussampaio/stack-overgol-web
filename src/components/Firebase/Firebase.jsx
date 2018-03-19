@@ -1,16 +1,16 @@
 import React from 'react'
 import firebase from 'firebase'
-import { FirebaseAuth } from 'react-firebaseui'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 
 import Table from '../Table'
 
 const config = {
-  apiKey: 'AIzaSyCN44MXJmFQW42p8VIn7UXn7PxCf2rnVFM',
-  authDomain: 'stack-overgol-bot.firebaseapp.com',
-  databaseURL: 'https://stack-overgol-bot.firebaseio.com',
-  projectId: 'stack-overgol-bot',
-  storageBucket: 'stack-overgol-bot.appspot.com',
-  messagingSenderId: '564241331900'
+  apiKey: "AIzaSyCN44MXJmFQW42p8VIn7UXn7PxCf2rnVFM",
+  authDomain: "stack-overgol-bot.firebaseapp.com",
+  databaseURL: "https://stack-overgol-bot.firebaseio.com",
+  projectId: "stack-overgol-bot",
+  storageBucket: "stack-overgol-bot.appspot.com",
+  messagingSenderId: "564241331900"
 }
 
 // Avoids initializing the App again (Hot reloading)
@@ -19,6 +19,7 @@ if (!firebase.apps.length) {
 }
 
 const uiConfig = {
+  signInFlow: 'popup',
   signInSuccessUrl: '/',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID
@@ -48,7 +49,7 @@ class Firebase extends React.Component {
   render() {
     return (
       <div>
-        { this.state.user ? <Table /> : <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/> }
+        { this.state.user ? <Table /> : <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/> }
       </div>
     )
   }
