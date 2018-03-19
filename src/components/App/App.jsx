@@ -30,7 +30,26 @@ class App extends React.Component {
     const db = firebase.database()
 
     db.ref().child('/users').once('value').then(s => {
-      this.setState({ users: Object.values(s.val()) })
+      const users = Object.values(s.val()).sort((a, b) => {
+        if (a.first_name < b.first_name) {
+          return -1
+        }
+
+        if (a.first_name > b.first_name) {
+          return 1
+        }
+
+        if (a.last_name < b.last_name) {
+          return -1
+        }
+
+        if (a.last_name > b.last_name) {
+          return 1
+        }
+
+        return 0
+      })
+      this.setState({ users })
     })
   }
 
