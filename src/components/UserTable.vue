@@ -17,7 +17,8 @@
 
 <script>
 import { mapActions } from 'vuex'
-import TableRow from './TableRow'
+
+import TableRow from '@/components/TableRow'
 
 export default {
   components: {
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateUser: 'updateUser',
+      updateUser: 'updateUser'
     })
   },
   mounted() {

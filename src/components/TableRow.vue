@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import TableCell from './TableCell'
+import TableCell from '@/components/TableCell'
 
 export default {
   components: {
