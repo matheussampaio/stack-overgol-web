@@ -22,8 +22,8 @@ export default {
         { type: 'text', field: 'first_name' },
         { type: 'text', field: 'last_name' },
         { type: 'number', field: 'rating' },
-        { type: 'checkbox', field: 'is_admin' },
-        { type: 'checkbox', field: 'is_subscriber' }
+        { type: 'checkbox', field: 'is_subscriber' },
+        { type: 'checkbox', field: 'is_admin' }
       ]
     }
   },
