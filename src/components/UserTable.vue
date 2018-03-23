@@ -9,20 +9,33 @@
         </tr>
       </thead>
       <tbody>
-        <TableRow v-for="(user, index) in users" :key="index" :user="user"/>
+        <TableRow v-for="(user, index) in users" :key="index" :user="user" @onUserUpdated="updateUser($event)"/>
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import TableRow from './TableRow'
 
 export default {
   components: {
     TableRow
   },
-  props: ['users']
+  computed: {
+    users() {
+      return this.$store.state.users
+    }
+  },
+  methods: {
+    ...mapActions({
+      updateUser: 'updateUser',
+    })
+  },
+  mounted() {
+    this.$store.dispatch('watchUsers')
+  }
 }
 </script>
 
