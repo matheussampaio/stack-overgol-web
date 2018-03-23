@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <UserTable/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import UserTable from '@/components/UserTable'
-
 export default {
-  name: 'App',
-  components: {
-    UserTable
-  }
+  name: 'App'
 }
 </script>
 
