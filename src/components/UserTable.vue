@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <TableRow v-for="(user, index) in users" :key="index" :user="user" @onUserUpdated="updateUser($event)"/>
+        <TableRow v-for="user in users" :key="user.uid" :user="user" @onUserUpdated="updateUser($event)"/>
       </tbody>
     </table>
   </div>

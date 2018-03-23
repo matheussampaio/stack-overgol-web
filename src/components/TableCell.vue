@@ -53,6 +53,11 @@ export default {
         this.newValue = v
       }
     }
+  },
+  watch: {
+    value(newValue, oldValue) {
+      this.newValue = newValue
+    }
   }
 }
 </script>

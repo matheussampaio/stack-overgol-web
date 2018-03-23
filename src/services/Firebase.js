@@ -25,10 +25,12 @@ class Firebase {
     firebase.database()
       .ref()
       .child('/users')
-      .once('value')
-      .then(snapshot => Object.values(snapshot.val()))
-      .then(users => users.sort(sortUsers))
-      .then(callback)
+      .on('value', (snapshot) => {
+        const users = Object.values(snapshot.val())
+        const sorted = users.sort(sortUsers)
+
+        callback(sorted)
+      })
   }
 
   static queueUserUpdate(update) {
