@@ -9,25 +9,16 @@
 </template>
 
 <script>
-import debounce from 'lodash/debounce'
-
 export default {
-  props: ['type', 'value', 'disabled'],
+  props: ['value', 'disabled'],
   data() {
     return {
       newValue: this.value
     }
   },
   methods: {
-    // eslint-disable-next-line func-names
     onInput() {
-      if (this.onInputDebounced == null) {
-        this.onInputDebounced = debounce(() => {
-          this.$emit('onFieldChanged', { newValue: this.newValue })
-        }, 2000)
-      }
-
-      this.onInputDebounced()
+      this.$emit('onFieldChanged', { newValue: this.newValue })
     }
   },
   watch: {
