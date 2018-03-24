@@ -21,8 +21,8 @@ const store = {
       context.commit('setLoadingUsers', true)
 
       Firebase.onUserChanges((users) => {
-        context.commit('setLoadingUsers', false)
         context.commit('setUsers', users)
+        context.commit('setLoadingUsers', false)
       })
     },
     updateUser(context, update) {
