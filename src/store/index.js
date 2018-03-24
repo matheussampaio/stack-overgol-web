@@ -7,6 +7,8 @@ Vue.use(Vuex)
 
 const store = {
   state: {
+    isAdmin: false,
+    user: null,
     users: []
   },
 
@@ -18,12 +20,26 @@ const store = {
     },
     updateUser(context, update) {
       Firebase.queueUserUpdate(update)
+    },
+    async onAuthStateChanged(context, user) {
+      if (user) {
+        Firebase.updateWebUser(user)
+      }
+
+      context.commit('setAuthState', user)
+      context.commit('setAdmin', user ? await Firebase.isAdmin(user) : false)
     }
   },
 
   mutations: {
     setUsers(state, users) {
       state.users = users
+    },
+    setAuthState(state, user) {
+      state.user = user
+    },
+    setAdmin(state, isAdmin) {
+      state.isAdmin = isAdmin
     }
   },
 

@@ -1,21 +1,24 @@
 <template>
-  <div class="card user-card">
-    <div class="columns card-body">
-      <div class="column col-3">
+  <div class="card user-card form-horizontal">
+    <div class="form-group">
+      <div class="form-field col-3">
         {{fullName}}
       </div>
-      <NumberInput class="column col-3"
+      <NumberInput class="form-field col-3"
         :value="user.rating"
+        :disabled="disabled"
         @onFieldChanged="onFieldChanged($event, 'rating')">
         Rating
       </NumberInput>
-      <CheckboxInput class="column col-3"
+      <CheckboxInput class="form-field col-3"
         :value="user.is_admin"
+        :disabled="disabled"
         @onFieldChanged="onFieldChanged($event, 'is_admin')">
         Administrador
       </CheckboxInput>
-      <CheckboxInput class="column col-3"
+      <CheckboxInput class="form-field col-3"
         :value="user.is_subscriber"
+        :disabled="disabled"
         @onFieldChanged="onFieldChanged($event, 'is_subscriber')">
         Mensalista
       </CheckboxInput>
@@ -32,7 +35,7 @@ export default {
     NumberInput,
     CheckboxInput
   },
-  props: ['user'],
+  props: ['user', 'disabled'],
   computed: {
     fullName() {
       return `${this.user.first_name} ${this.user.last_name}`.trim()
@@ -55,19 +58,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .user-card {
   margin-bottom: 16px;
 }
-
-.card-body {
-  display: flex;
-  justify-content: space-between;
+.user-card .form-group {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-.user-card .column {
+.form-field  {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 </style>

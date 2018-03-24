@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1 class="title">Stack Overgol Web</h1>
+    <p v-if="user" class="user-infos">
+      Oi {{user.displayName}}, seu UID é: <code>{{user.uid}}</code>.
+    </p>
 
-    <UserCard v-for="user in users" :key="user.uid" :user="user" @onUserUpdated="updateUser($event)"/>
+    <UserCard v-for="user in users" :key="user.uid"
+      :user="user"
+      :disabled="userIsNotAdmin"
+      @onUserUpdated="updateUser($event)"/>
   </div>
 </template>
 
@@ -18,6 +23,12 @@ export default {
   computed: {
     users() {
       return this.$store.state.users
+    },
+    user() {
+      return this.$store.state.user
+    },
+    userIsNotAdmin() {
+      return !this.$store.state.isAdmin
     }
   },
   methods: {
@@ -32,8 +43,8 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  padding: 30px;
+.user-infos {
+  padding: 8px;
   text-align: center;
 }
 </style>

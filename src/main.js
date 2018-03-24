@@ -22,6 +22,8 @@ new Vue({
       firebase.initializeApp(config)
 
       firebase.auth().onAuthStateChanged((user) => {
+        this.$store.dispatch('onAuthStateChanged', user)
+
         if (user) {
           this.$router.push('/')
         } else {

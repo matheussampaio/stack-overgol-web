@@ -22,7 +22,7 @@ function sortUsers(u1, u2) {
 
 class Firebase {
   static onUserChanges(callback) {
-    firebase.database()
+    return firebase.database()
       .ref()
       .child('/users')
       .on('value', (snapshot) => {
@@ -34,10 +34,33 @@ class Firebase {
   }
 
   static queueUserUpdate(update) {
-    firebase.database()
+    return firebase.database()
       .ref()
       .child('/updates')
       .push(update)
+  }
+
+  static updateWebUser(user) {
+    return firebase.database()
+      .ref()
+      .child('/web-users')
+      .child(user.uid)
+      .update({
+        display_name: user.displayName,
+        email: user.email,
+        uid: user.uid
+      })
+  }
+
+  static async isAdmin(user) {
+    const snapshot = await firebase.database()
+      .ref()
+      .child('/web-users')
+      .child(user.uid)
+      .child('is_admin')
+      .once('value')
+
+    return snapshot.val()
   }
 }
 

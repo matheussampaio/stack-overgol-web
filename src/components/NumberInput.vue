@@ -1,6 +1,7 @@
 <template>
-  <div class="form-group">
+  <div>
     <input class="form-input number-input"
+      :class="{'disabled': disabled}"
       @input="onInput"
       @change="onInput"
       type="number"
@@ -12,7 +13,7 @@
 import debounce from 'lodash/debounce'
 
 export default {
-  props: ['type', 'value'],
+  props: ['type', 'value', 'disabled'],
   data() {
     return {
       newValue: this.value

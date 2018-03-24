@@ -1,7 +1,7 @@
 <template>
-  <div class="form-group">
+  <div>
     <label class="form-switch">
-      <input @input="onInput" @change="onInput" type="checkbox" v-model="newValue">
+      <input :class="{'disabled': disabled}" @input="onInput" @change="onInput" type="checkbox" v-model="newValue">
       <i class="form-icon"></i>
       <slot/>
     </label>
@@ -12,7 +12,7 @@
 import debounce from 'lodash/debounce'
 
 export default {
-  props: ['type', 'value'],
+  props: ['type', 'value', 'disabled'],
   data() {
     return {
       newValue: this.value
