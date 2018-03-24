@@ -32,8 +32,8 @@ export default {
       const payload = {
         resource: 'users',
         operation: 'update',
-        data: {
-          uid: this.user.uid,
+        payload: {
+          id: this.user.uid,
           [cell.field]: event.newValue
         }
       }
