@@ -1,28 +1,19 @@
 <template>
   <div>
-    <h1>Stack Overgol Web</h1>
+    <h1 class="title">Stack Overgol Web</h1>
 
-    <table>
-      <thead>
-        <tr>
-          <th>First Name</th><th>Last Name</th><th>Rating</th><th>Subcriber</th><th>Admin</th>
-        </tr>
-      </thead>
-      <tbody>
-        <TableRow v-for="user in users" :key="user.uid" :user="user" @onUserUpdated="updateUser($event)"/>
-      </tbody>
-    </table>
+    <UserCard v-for="user in users" :key="user.uid" :user="user" @onUserUpdated="updateUser($event)"/>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 
-import TableRow from '@/components/TableRow'
+import UserCard from '@/components/UserCard'
 
 export default {
   components: {
-    TableRow
+    UserCard
   },
   computed: {
     users() {
@@ -40,6 +31,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.title {
+  padding: 30px;
+  text-align: center;
+}
 </style>

@@ -1,6 +1,10 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div id="app" class="container">
+    <div class="columns">
+      <div class="col-8 col-mx-auto">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 

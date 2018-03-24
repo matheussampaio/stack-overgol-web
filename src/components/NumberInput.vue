@@ -1,14 +1,11 @@
 <template>
-  <td>
-    <!-- Checkbox -->
-    <input v-if="isCheckboxField" @input="onInput" @change="onInput" type="checkbox" v-model="newValue">
-
-    <!-- Number -->
-    <input v-else-if="isNumberField" @input="onInput" @change="onInput" type="number" v-model.number="formattedNumber">
-
-    <!-- Text -->
-    <input v-else @input="onInput" @change="onInput" type="text" v-model="newValue">
-  </td>
+  <div class="form-group">
+    <input class="form-input number-input"
+      @input="onInput"
+      @change="onInput"
+      type="number"
+      v-model.number="formattedNumber">
+  </div>
 </template>
 
 <script>
@@ -32,14 +29,9 @@ export default {
 
       this.onInputDebounced()
     }
+
   },
   computed: {
-    isCheckboxField() {
-      return this.type === 'checkbox'
-    },
-    isNumberField() {
-      return this.type === 'number'
-    },
     formatter() {
       const options = { minimumIntegerDigits: 1, minimumFractionDigits: 2, maximumFractionDigits: 2 }
 
@@ -55,9 +47,21 @@ export default {
     }
   },
   watch: {
-    value(newValue, oldValue) {
+    value(newValue) {
       this.newValue = newValue
     }
   }
 }
 </script>
+
+<style scoper>
+.number-input {
+  text-align: center;
+  width: 50%
+}
+
+input.form-input.number-input:invalid {
+  border-color: #CACED7;
+  box-shadow: none;
+}
+</style>
