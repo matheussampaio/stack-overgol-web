@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input class="form-input number-input"
+    <input class="centered text-center form-input number-input"
       :class="{'disabled': disabled}"
       @input="onInput"
       @change="onInput"
@@ -57,7 +57,6 @@ export default {
 
 <style scoper>
 .number-input {
-  text-align: center;
   width: 50%
 }
 

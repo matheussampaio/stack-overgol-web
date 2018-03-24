@@ -26,8 +26,8 @@ const store = {
         Firebase.updateWebUser(user)
       }
 
-      context.commit('setAuthState', user)
       context.commit('setAdmin', user ? await Firebase.isAdmin(user) : false)
+      context.commit('setAuthState', user)
     }
   },
 

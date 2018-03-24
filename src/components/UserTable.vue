@@ -1,7 +1,11 @@
 <template>
   <div>
-    <p v-if="user" class="user-infos">
-      Oi {{user.displayName}}, seu UID é: <code>{{user.uid}}</code>.
+    <p v-if="user" class="user-infos text-center">
+      Oi {{user.displayName}}, seu UID é <code>{{user.uid}}</code>.
+    </p>
+
+    <p v-if="user && userIsNotAdmin" class="toast toast-warning text-center">
+      Você não está autorizado à alterar os dados.
     </p>
 
     <UserCard v-for="user in users" :key="user.uid"
@@ -45,6 +49,5 @@ export default {
 <style scoped>
 .user-infos {
   padding: 8px;
-  text-align: center;
 }
 </style>

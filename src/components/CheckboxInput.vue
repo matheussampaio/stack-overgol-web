@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="form-switch">
+    <label class="centered form-switch text-ellipsis">
       <input :class="{'disabled': disabled}" @input="onInput" @change="onInput" type="checkbox" v-model="newValue">
       <i class="form-icon"></i>
       <slot/>

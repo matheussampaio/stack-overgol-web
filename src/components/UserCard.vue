@@ -1,8 +1,10 @@
 <template>
   <div class="card user-card form-horizontal">
     <div class="form-group">
-      <div class="form-field col-3">
-        {{fullName}}
+      <div class="form-field col-3 ">
+        <div class="text-ellipsis">
+          {{fullName}}
+        </div>
       </div>
       <NumberInput class="form-field col-3"
         :value="user.rating"
@@ -10,13 +12,13 @@
         @onFieldChanged="onFieldChanged($event, 'rating')">
         Rating
       </NumberInput>
-      <CheckboxInput class="form-field col-3"
+      <CheckboxInput class="form-field col-3 text-ellipsis"
         :value="user.is_admin"
         :disabled="disabled"
         @onFieldChanged="onFieldChanged($event, 'is_admin')">
         Administrador
       </CheckboxInput>
-      <CheckboxInput class="form-field col-3"
+      <CheckboxInput class="form-field col-3 text-ellipsis"
         :value="user.is_subscriber"
         :disabled="disabled"
         @onFieldChanged="onFieldChanged($event, 'is_subscriber')">
