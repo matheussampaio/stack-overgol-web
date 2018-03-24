@@ -10,7 +10,7 @@ export default {
   name: 'auth',
   mounted() {
     const uiConfig = {
-      signInSuccessUrl: '/',
+      signInSuccessUrl: '#',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ]
