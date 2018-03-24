@@ -1,17 +1,22 @@
 <template>
   <div>
-    <p v-if="user" class="user-infos text-center">
-      Oi {{user.displayName}}, seu UID é <code>{{user.uid}}</code>.
-    </p>
+    <div v-if="isLoadingUsers" class="loading loading-user" />
+    <div v-else>
+      <p v-if="user" class="user-infos text-center">
+        Oi {{user.displayName}}, seu UID é <code>{{user.uid}}</code>.
+      </p>
 
-    <p v-if="user && userIsNotAdmin" class="toast toast-warning text-center">
-      Você não está autorizado à alterar os dados.
-    </p>
+      <p v-if="user && userIsNotAdmin" class="toast toast-warning text-center">
+        Você não está autorizado à alterar os dados.
+      </p>
+    </div>
 
-    <UserCard v-for="user in users" :key="user.uid"
+    <div v-if="isLoadingUsers" class="loading loading-lg loading-users"/>
+    <UserCard v-else v-for="user in users" :key="user.uid"
       :user="user"
       :disabled="userIsNotAdmin"
       @onUserUpdated="updateUser($event)"/>
+
   </div>
 </template>
 
@@ -33,6 +38,12 @@ export default {
     },
     userIsNotAdmin() {
       return !this.$store.state.isAdmin
+    },
+    isLoadingUser() {
+      return this.$store.state.loadings.user
+    },
+    isLoadingUsers() {
+      return this.$store.state.loadings.users
     }
   },
   methods: {
@@ -49,5 +60,15 @@ export default {
 <style scoped>
 .user-infos {
   padding: 8px;
+}
+
+.loading-user {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.loading-users {
+  margin-top: 100px;
 }
 </style>
