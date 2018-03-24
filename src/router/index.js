@@ -13,6 +13,6 @@ const routes = [
 
 export default new VueRouter({
   mode: 'history',
-  base: '/stack-overgol-web/',
+  base: process.env.BASE_URL || '/',
   routes
 })
