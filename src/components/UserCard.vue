@@ -5,7 +5,7 @@
       <div class="form-field col-3">
         <div class="text-ellipsis">
           {{fullName}}
-          <div v-if="daysInactive" class="text-warning text-small">
+          <div v-if="daysInactive > 14" class="text-warning text-small">
             {{daysInactive}} dias inativo
           </div>
         </div>
