@@ -12,10 +12,24 @@
     </div>
 
     <div v-if="isLoadingUsers" class="loading loading-lg loading-users"/>
-    <UserCard v-else v-for="user in users" :key="user.uid"
-      :user="user"
-      :disabled="userIsNotAdmin"
-      @onUserUpdated="updateUser($event)"/>
+    <div v-else>
+      <div>
+        <div class="col-3 col-mx-auto">
+          <label class="centered form-switch text-ellipsis">
+            <input type="checkbox" v-model="showInactives">
+            <i class="form-icon"></i>
+            Mostrar inativos
+          </label>
+        </div>
+      </div>
+
+      <br>
+
+      <UserCard v-for="user in users" :key="user.uid"
+        :user="user"
+        :disabled="userIsNotAdmin"
+        @onUserUpdated="updateUser($event)"/>
+    </div>
 
   </div>
 </template>
@@ -29,9 +43,23 @@ export default {
   components: {
     UserCard
   },
+  data() {
+    return {
+      showInactives: false
+    }
+  },
   computed: {
     users() {
-      return this.$store.state.users
+      if (this.showInactives) {
+        return this.$store.state.users
+      }
+
+      return this.$store.state.users.filter(user => {
+        const nowInSeconds = new Date().getTime() / 1000
+        const secondsInOneDay = 60 * 60 * 24
+
+        return parseInt((nowInSeconds - user.last_seen) / secondsInOneDay, 10) < 30
+      })
     },
     user() {
       return this.$store.state.user

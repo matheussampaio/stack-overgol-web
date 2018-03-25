@@ -2,7 +2,7 @@
   <div class="card user-card form-horizontal"
     :class="{ 'dirt': isDirt && !updating, 'updating': updating, 'success': success }">
     <div class="form-group">
-      <div class="form-field col-3 ">
+      <div class="form-field col-3">
         <div class="text-ellipsis">
           {{fullName}}
           <div v-if="daysInactive" class="text-warning text-small">
@@ -113,7 +113,7 @@ export default {
             resource: 'users',
             operation: 'update'
           })
-        }, 2000)
+        }, 5000)
       }
 
       this.updateUserDebounced()
