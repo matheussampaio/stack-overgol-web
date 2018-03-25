@@ -1,11 +1,17 @@
 <template>
-  <div>
+  <div :class="{ 'invalid': error }">
     <input class="centered text-center form-input number-input"
-      :class="{'disabled': disabled}"
+      :class="{'disabled': disabled }"
+      max="5"
+      min="0.01"
+      step="0.01"
       @input="onInput"
       @change="onInput"
       type="number"
       v-model.number="formattedNumber">
+    <div v-if="error" class="text-error text-small">
+      Rating inválido.
+    </div>
   </div>
 </template>
 
@@ -19,9 +25,12 @@ export default {
   },
   methods: {
     onInput() {
+      if (this.error) {
+        return
+      }
+
       this.$emit('onFieldChanged', { newValue: this.newValue })
     }
-
   },
   computed: {
     formatter() {
@@ -36,6 +45,9 @@ export default {
       set(v) {
         this.newValue = v
       }
+    },
+    error() {
+      return typeof this.newValue !== 'number' || this.newValue <= 0 || this.newValue > 5
     }
   },
   watch: {
@@ -51,8 +63,11 @@ export default {
   width: 50%
 }
 
-input.form-input.number-input:invalid {
-  border-color: #CACED7;
-  box-shadow: none;
+.invalid {
+  flex-flow: column;
+}
+
+.text-small {
+  font-size: x-small;
 }
 </style>

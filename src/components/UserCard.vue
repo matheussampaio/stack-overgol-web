@@ -77,7 +77,7 @@ export default {
       const nowInSeconds = new Date().getTime() / 1000
       const secondsInOneDay = 60 * 60 * 24
 
-      return parseInt((nowInSeconds - this.user.last_seen) / secondsInOneDay)
+      return parseInt((nowInSeconds - this.user.last_seen) / secondsInOneDay, 10)
     }
   },
   methods: {
