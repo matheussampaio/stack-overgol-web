@@ -2,10 +2,6 @@
   <div>
     <div v-if="isLoadingUser" class="loading loading-user" />
     <div v-else>
-      <p v-if="user" class="user-infos text-center">
-        Oi {{user.displayName}}, seu UID é <code>{{user.uid}}</code>.
-      </p>
-
       <p v-if="user && userIsNotAdmin" class="toast toast-warning text-center">
         Você não está autorizado à alterar os dados.
       </p>
