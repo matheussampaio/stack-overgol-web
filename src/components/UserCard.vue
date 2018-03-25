@@ -5,6 +5,9 @@
       <div class="form-field col-3 ">
         <div class="text-ellipsis">
           {{fullName}}
+          <div v-if="daysInactive" class="text-warning text-small">
+            {{daysInactive}} dias inativo
+          </div>
         </div>
       </div>
       <NumberInput class="form-field col-3"
@@ -69,6 +72,12 @@ export default {
       return this.changes.rating.changed
         || this.changes.is_subscriber.changed
         || this.changes.is_admin.changed
+    },
+    daysInactive() {
+      const nowInSeconds = new Date().getTime() / 1000
+      const secondsInOneDay = 60 * 60 * 24
+
+      return parseInt((nowInSeconds - this.user.last_seen) / secondsInOneDay)
     }
   },
   methods: {
@@ -159,5 +168,9 @@ export default {
 .form-field  {
   display: flex;
   align-items: center;
+}
+
+.text-small {
+  font-size: x-small;
 }
 </style>
