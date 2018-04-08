@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import Firebase from '@/services/Firebase'
+import Firebase from '../services/Firebase'
 
 Vue.use(Vuex)
 
@@ -55,10 +55,6 @@ const store = {
     setAdmin(state, isAdmin) {
       state.isAdmin = isAdmin
     }
-  },
-
-  getters: {
-
   }
 }
 

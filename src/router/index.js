@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Auth from '@/components/Auth'
-import UserTable from '@/components/UserTable'
+import Auth from '../components/Auth'
+import UserTable from '../components/UserTable'
 
 Vue.use(VueRouter)
 

@@ -33,7 +33,7 @@
 <script>
 import { mapActions } from 'vuex'
 
-import UserCard from '@/components/UserCard'
+import UserCard from './UserCard'
 
 export default {
   components: {
@@ -50,11 +50,11 @@ export default {
         return this.$store.state.users
       }
 
-      return this.$store.state.users.filter(user => {
+      return this.$store.state.users.filter((user) => {
         const nowInSeconds = new Date().getTime() / 1000
         const secondsInOneDay = 60 * 60 * 24
 
-        return parseInt((nowInSeconds - user.last_seen) / secondsInOneDay, 10) <= 14
+        return parseInt((nowInSeconds - user.last_seen) / secondsInOneDay, 10) < 14
       })
     },
     user() {

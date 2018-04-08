@@ -49,6 +49,7 @@ module.exports = {
     'semi': ['error', 'never'],
     'comma-dangle': ['error', 'never'],
     'max-len': ['error', { 'code': 120 }],
-    'no-shadow': ['off']
+    'no-shadow': ['off'],
+    'no-console': ['off']
   }
 }

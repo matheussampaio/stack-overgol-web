@@ -34,6 +34,8 @@ class Firebase {
   }
 
   static queueUserUpdate(update) {
+    console.log('queueUserUpdate', update)
+
     return firebase.database()
       .ref()
       .child('/updates')
@@ -41,15 +43,19 @@ class Firebase {
   }
 
   static updateWebUser(user) {
+    const data = {
+      display_name: user.displayName,
+      email: user.email,
+      uid: user.uid
+    }
+
+    console.log('updateWebUser', data)
+
     return firebase.database()
       .ref()
       .child('/web-users')
       .child(user.uid)
-      .update({
-        display_name: user.displayName,
-        email: user.email,
-        uid: user.uid
-      })
+      .update(data)
   }
 
   static async isAdmin(user) {

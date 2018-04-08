@@ -5,7 +5,7 @@
       <div class="form-field col-3">
         <div class="text-ellipsis">
           {{fullName}}
-          <div v-if="daysInactive > 14" class="text-warning text-small">
+          <div v-if="daysInactive >= 14" class="text-warning text-small">
             {{daysInactive}} dias inativo
           </div>
         </div>
@@ -35,8 +35,8 @@
 <script>
 import debounce from 'lodash/debounce'
 
-import CheckboxInput from '@/components/CheckboxInput'
-import NumberInput from '@/components/NumberInput'
+import CheckboxInput from './CheckboxInput'
+import NumberInput from './NumberInput'
 
 export default {
   components: {
@@ -108,11 +108,13 @@ export default {
 
           this.updating = true
 
-          this.$emit('onUserUpdated', {
+          const data = {
             payload,
             resource: 'users',
             operation: 'update'
-          })
+          }
+
+          this.$emit('onUserUpdated', data)
         }, 5000)
       }
 
