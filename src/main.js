@@ -11,6 +11,8 @@ import config from '@/helpers/firebaseConfig'
 
 import 'firebaseui/dist/firebaseui.css'
 
+console.log({ config })
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
