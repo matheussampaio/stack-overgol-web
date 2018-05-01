@@ -1,6 +1,7 @@
-# stack-overgol-web
+[![Build Status](https://travis-ci.com/matheussampaio/stack-overgol-web.svg?branch=master)](https://travis-ci.com/matheussampaio/stack-overgol-web)
 
-> Stack Overgol Web Interface
+# Stack Overgol Web
+
 
 ## Build Setup
 
@@ -17,5 +18,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
