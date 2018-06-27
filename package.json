@@ -9,7 +9,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "errorhandler": "^1.5.0",
