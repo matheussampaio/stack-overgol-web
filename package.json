@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "serve -n -s -l tcp://0.0.0.0 dist"
+    "start": "serve -n -s -l tcp://0.0.0.0:3000 dist"
   },
   "dependencies": {
     "firebase": "^5.1.0",
@@ -53,5 +53,9 @@
     "css": {
       "sourceMap": true
     }
+  },
+  "engines": {
+    "node": "10.5.0",
+    "npm": "6.1.0"
   }
 }
