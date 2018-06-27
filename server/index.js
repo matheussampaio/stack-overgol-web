@@ -3,18 +3,31 @@ const path = require("path");
 const morgan = require("morgan");
 const errorHandler = require("errorhandler");
 const helmet = require("helmet");
+const Raven = require('raven');
+
+const enableSentry = process.env.SENTRY_ENDPOINT != null
+
+if (enableSentry) {
+  Raven.config(process.env.SENTRY_ENDPOINT).install();
+}
 
 const port = process.env.PORT || 8080;
 const app = express();
 
+if (enableSentry) {
+  app.use(Raven.requestHandler());
+}
+
 app.use(morgan("dev"))
-// serve static assets normally
 app.use(express.static(path.resolve("dist")));
-app.use(errorHandler());
 app.use(helmet());
 
-// handle every other route with index.html, which will contain
-// a script tag to your application's JavaScript file(s).
+if (enableSentry) {
+  app.use(Raven.errorHandler());
+}
+
+app.use(errorHandler());
+
 app.all("*", (req, res) => {
   res.sendFile(path.resolve("dist/index.html"));
 });
