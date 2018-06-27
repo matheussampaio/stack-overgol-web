@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - run: npm ci
+      - run: npm run build
       - run:
           name: Deploy Master to Heroku
           command: |
