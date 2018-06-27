@@ -1,45 +1,46 @@
-import firebase from 'firebase'
+import firebase from "firebase/app";
+import "firebase/database";
 
 function sortUsers(u1, u2) {
   if (u1.first_name < u2.first_name) {
-    return -1
+    return -1;
   }
 
   if (u1.first_name > u2.first_name) {
-    return 1
+    return 1;
   }
 
   if (u1.last_name < u2.last_name) {
-    return -1
+    return -1;
   }
 
   if (u1.last_name > u2.last_name) {
-    return 1
+    return 1;
   }
 
-  return 0
+  return 0;
 }
 
 class Firebase {
   static onUserChanges(callback) {
-    return firebase.database()
+    return firebase
+      .database()
       .ref()
-      .child('/users')
-      .on('value', (snapshot) => {
-        const users = Object.values(snapshot.val())
-        const sorted = users.sort(sortUsers)
+      .child("/users")
+      .on("value", snapshot => {
+        const users = Object.values(snapshot.val());
+        const sorted = users.sort(sortUsers);
 
-        callback(sorted)
-      })
+        callback(sorted);
+      });
   }
 
   static queueUserUpdate(update) {
-    console.log('queueUserUpdate', update)
-
-    return firebase.database()
+    return firebase
+      .database()
       .ref()
-      .child('/updates')
-      .push(update)
+      .child("/updates")
+      .push(update);
   }
 
   static updateWebUser(user) {
@@ -47,27 +48,27 @@ class Firebase {
       display_name: user.displayName,
       email: user.email,
       uid: user.uid
-    }
+    };
 
-    console.log('updateWebUser', data)
-
-    return firebase.database()
+    return firebase
+      .database()
       .ref()
-      .child('/web-users')
+      .child("/web-users")
       .child(user.uid)
-      .update(data)
+      .update(data);
   }
 
   static async isAdmin(user) {
-    const snapshot = await firebase.database()
+    const snapshot = await firebase
+      .database()
       .ref()
-      .child('/web-users')
+      .child("/web-users")
       .child(user.uid)
-      .child('is_admin')
-      .once('value')
+      .child("is_admin")
+      .once("value");
 
-    return snapshot.val()
+    return snapshot.val();
   }
 }
 
-export default Firebase
+export default Firebase;

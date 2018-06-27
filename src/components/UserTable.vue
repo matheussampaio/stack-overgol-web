@@ -31,54 +31,57 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
-import UserCard from './UserCard'
+import UserCard from "./UserCard";
 
 export default {
+  name: "UserTable",
   components: {
     UserCard
   },
   data() {
     return {
       showInactives: false
-    }
+    };
   },
   computed: {
     users() {
       if (this.showInactives) {
-        return this.$store.state.users
+        return this.$store.state.users;
       }
 
-      return this.$store.state.users.filter((user) => {
-        const nowInSeconds = new Date().getTime() / 1000
-        const secondsInOneDay = 60 * 60 * 24
+      return this.$store.state.users.filter(user => {
+        const nowInSeconds = new Date().getTime() / 1000;
+        const secondsInOneDay = 60 * 60 * 24;
 
-        return parseInt((nowInSeconds - user.last_seen) / secondsInOneDay, 10) < 14
-      })
+        return (
+          parseInt((nowInSeconds - user.last_seen) / secondsInOneDay, 10) < 14
+        );
+      });
     },
     user() {
-      return this.$store.state.user
+      return this.$store.state.user;
     },
     userIsNotAdmin() {
-      return !this.$store.state.isAdmin
+      return !this.$store.state.isAdmin;
     },
     isLoadingUser() {
-      return this.$store.state.loadings.user
+      return this.$store.state.loadings.user;
     },
     isLoadingUsers() {
-      return this.$store.state.loadings.users
+      return this.$store.state.loadings.users;
     }
   },
   methods: {
     ...mapActions({
-      updateUser: 'updateUser'
+      updateUser: "updateUser"
     })
   },
   mounted() {
-    this.$store.dispatch('watchUsers')
+    this.$store.dispatch("watchUsers");
   }
-}
+};
 </script>
 
 <style scoped>

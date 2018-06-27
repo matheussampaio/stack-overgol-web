@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/matheussampaio/stack-overgol-web.svg?branch=master)](https://travis-ci.com/matheussampaio/stack-overgol-web)
+[![CircleCI](https://circleci.com/gh/matheussampaio/stack-overgol-web.svg?style=svg)](https://circleci.com/gh/matheussampaio/stack-overgol-web)
 
 # Stack Overgol Web
 
@@ -10,13 +10,10 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run server
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
 ## License

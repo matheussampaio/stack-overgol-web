@@ -33,17 +33,18 @@
 </template>
 
 <script>
-import debounce from 'lodash/debounce'
+import debounce from "lodash/debounce";
 
-import CheckboxInput from './CheckboxInput'
-import NumberInput from './NumberInput'
+import CheckboxInput from "./CheckboxInput";
+import NumberInput from "./NumberInput";
 
 export default {
+  name: "UserCard",
   components: {
     NumberInput,
     CheckboxInput
   },
-  props: ['user', 'disabled'],
+  props: ["user", "disabled"],
   data() {
     return {
       updating: false,
@@ -62,88 +63,98 @@ export default {
           value: false
         }
       }
-    }
+    };
   },
   computed: {
     fullName() {
-      return `${this.user.first_name} ${this.user.last_name}`.trim()
+      return `${this.user.first_name} ${this.user.last_name}`.trim();
     },
     isDirt() {
-      return this.changes.rating.changed
-        || this.changes.is_subscriber.changed
-        || this.changes.is_admin.changed
+      return (
+        this.changes.rating.changed ||
+        this.changes.is_subscriber.changed ||
+        this.changes.is_admin.changed
+      );
     },
     daysInactive() {
-      const nowInSeconds = new Date().getTime() / 1000
-      const secondsInOneDay = 60 * 60 * 24
+      const nowInSeconds = new Date().getTime() / 1000;
+      const secondsInOneDay = 60 * 60 * 24;
 
-      return parseInt((nowInSeconds - this.user.last_seen) / secondsInOneDay, 10)
+      return parseInt(
+        (nowInSeconds - this.user.last_seen) / secondsInOneDay,
+        10
+      );
     }
   },
   methods: {
     onFieldChanged(event, field) {
-      this.changes[field].changed = true
-      this.changes[field].value = event.newValue
+      this.changes[field].changed = true;
+      this.changes[field].value = event.newValue;
 
-      this.updateUser()
+      this.updateUser();
     },
     updateUser() {
       if (this.updateUserDebounced == null) {
         this.updateUserDebounced = debounce(() => {
           const payload = {
             id: this.user.uid
-          }
+          };
 
           if (this.changes.rating.changed) {
-            payload.rating = this.changes.rating.value
+            payload.rating = this.changes.rating.value;
           }
 
           if (this.changes.is_subscriber.changed) {
-            payload.is_subscriber = this.changes.is_subscriber.value
+            payload.is_subscriber = this.changes.is_subscriber.value;
           }
 
           if (this.changes.is_admin.changed) {
-            payload.is_admin = this.changes.is_admin.value
+            payload.is_admin = this.changes.is_admin.value;
           }
 
-          this.updating = true
+          this.updating = true;
 
           const data = {
             payload,
-            resource: 'users',
-            operation: 'update'
-          }
+            resource: "users",
+            operation: "update"
+          };
 
-          this.$emit('onUserUpdated', data)
-        }, 5000)
+          this.$emit("onUserUpdated", data);
+        }, 5000);
       }
 
-      this.updateUserDebounced()
+      this.updateUserDebounced();
     }
   },
   watch: {
     user(newUser) {
       if (this.changes.rating.changed) {
-        this.changes.rating.changed = this.changes.rating.value !== newUser.rating
-        this.success = true
+        this.changes.rating.changed =
+          this.changes.rating.value !== newUser.rating;
+        this.success = true;
       }
 
       if (this.changes.is_subscriber.changed) {
-        this.changes.is_subscriber.changed = this.changes.is_subscriber.value !== newUser.is_subscriber
-        this.success = true
+        this.changes.is_subscriber.changed =
+          this.changes.is_subscriber.value !== newUser.is_subscriber;
+        this.success = true;
       }
 
       if (this.changes.is_admin.changed) {
-        this.changes.is_admin.changed = this.changes.is_admin.value !== newUser.is_admin
-        this.success = true
+        this.changes.is_admin.changed =
+          this.changes.is_admin.value !== newUser.is_admin;
+        this.success = true;
       }
 
-      this.updating = false
+      this.updating = false;
 
-      setTimeout(() => { this.success = false }, 500)
+      setTimeout(() => {
+        this.success = false;
+      }, 500);
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -167,7 +178,7 @@ export default {
   box-shadow: 0px 0px 5px 3px rgba(4, 140, 0, 1);
 }
 
-.form-field  {
+.form-field {
   display: flex;
   align-items: center;
 }

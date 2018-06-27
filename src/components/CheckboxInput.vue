@@ -10,21 +10,22 @@
 
 <script>
 export default {
-  props: ['value', 'disabled'],
+  name: "CheckboxInput",
+  props: ["value", "disabled"],
   data() {
     return {
       newValue: this.value
-    }
+    };
   },
   methods: {
     onInput() {
-      this.$emit('onFieldChanged', { newValue: this.newValue })
+      this.$emit("onFieldChanged", { newValue: this.newValue });
     }
   },
   watch: {
     value(newValue) {
-      this.newValue = newValue
+      this.newValue = newValue;
     }
   }
-}
+};
 </script>

@@ -17,50 +17,59 @@
 
 <script>
 export default {
-  props: ['value', 'disabled'],
+  name: "NumberInput",
+  props: ["value", "disabled"],
   data() {
     return {
       newValue: this.value
-    }
+    };
   },
   methods: {
     onInput() {
       if (this.error) {
-        return
+        return;
       }
 
-      this.$emit('onFieldChanged', { newValue: this.newValue })
+      this.$emit("onFieldChanged", { newValue: this.newValue });
     }
   },
   computed: {
     formatter() {
-      const options = { minimumIntegerDigits: 1, minimumFractionDigits: 2, maximumFractionDigits: 2 }
+      const options = {
+        minimumIntegerDigits: 1,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      };
 
-      return new Intl.NumberFormat('arab', options)
+      return new Intl.NumberFormat("arab", options);
     },
     formattedNumber: {
       get() {
-        return this.formatter.format(this.newValue)
+        return this.formatter.format(this.newValue);
       },
       set(v) {
-        this.newValue = v
+        this.newValue = v;
       }
     },
     error() {
-      return typeof this.newValue !== 'number' || this.newValue <= 0 || this.newValue > 5
+      return (
+        typeof this.newValue !== "number" ||
+        this.newValue <= 0 ||
+        this.newValue > 5
+      );
     }
   },
   watch: {
     value(newValue) {
-      this.newValue = newValue
+      this.newValue = newValue;
     }
   }
-}
+};
 </script>
 
 <style scoper>
 .number-input {
-  width: 50%
+  width: 50%;
 }
 
 .invalid {
