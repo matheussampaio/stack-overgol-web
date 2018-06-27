@@ -8,8 +8,24 @@ jobs:
   release_and_deploy:
     <<: *defaults
     steps:
+      - restore_cache:
+          keys:
+            - v1-source-cache-{{ .Branch }}
+            - v1-source-cache-
       - checkout
+      - save_cache:
+          key: v1-source-cache-{{ .Branch }}
+          paths:
+            - src
+      - restore_cache:
+          keys:
+            - v1-node_modules-{{ checksum "package-lock.json" }}
+            - v1-node_modules-
       - run: npm ci
+      - save_cache:
+          key: v1-node_modules-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
       - run: npm run build
       - run:
           name: Deploy Master to Heroku
