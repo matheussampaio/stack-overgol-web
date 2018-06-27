@@ -4,16 +4,20 @@
   "description": "Stack Overgol Web Interface",
   "author": "Matheus Sampaio <matheus@sampaio.us>",
   "private": true,
+  "main": "server/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "serve -n -s -l tcp://0.0.0.0:3000 dist"
+    "start": "node server/index.js"
   },
   "dependencies": {
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.3",
     "firebase": "^5.1.0",
     "firebaseui": "^3.1.0",
-    "serve": "^9.1.0",
+    "helmet": "^3.12.1",
+    "morgan": "^1.9.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -23,6 +27,7 @@
     "@vue/cli-plugin-eslint": "^3.0.0-rc.3",
     "@vue/cli-service": "^3.0.0-rc.3",
     "@vue/eslint-config-prettier": "^3.0.0-rc.3",
+    "nodemon": "^1.17.5",
     "vue-template-compiler": "^2.5.16"
   },
   "eslintConfig": {
