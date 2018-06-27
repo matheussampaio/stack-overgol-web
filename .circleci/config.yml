@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults
   docker:
-    - image: node:10-alpine
+    - image: node:10.3.0
 
 jobs:
   release_and_deploy:
